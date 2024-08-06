@@ -52,7 +52,7 @@ func main() {
 
 	router.GET("/", func(c *gin.Context) {
             c.HTML(http.StatusOK, "index.html", gin.H{
-                "Title":   "Gin Template Example",
+                "Title":   "Versions",
                 "Message": versions,
             })
         })
