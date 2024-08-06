@@ -9,7 +9,7 @@
 <body>
     <h1>{{ .Title }}</h1>
     <ul>
-        {{ range .Messages }}
+        {{ range .Message }}
         <li>{{ .ID }} - (<a href="{{ .Url }}">{{ .Version }} )by {{ .Contributor }}</li>
         {{ else }}
         <li>No messages available.</li>
