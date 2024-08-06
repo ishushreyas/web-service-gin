@@ -47,10 +47,10 @@ func getVersionByID(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
-	r.LoadHTMLGlob("templates/*")
-	r.Static("/static", "./static")
+	router.LoadHTMLGlob("templates/*")
+	router.Static("/static", "./static")
 
-	r.GET("/", func(c *gin.Context) {
+	router.GET("/", func(c *gin.Context) {
             c.HTML(http.StatusOK, "index.html", gin.H{
                 "Title":   "Gin Template Example",
                 "Message": "Hello, World!",
