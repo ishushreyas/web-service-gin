@@ -7,7 +7,14 @@
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
-    <h1>{{ .Message }}</h1>
+    <h1>{{ .Title }}</h1>
+    <ul>
+        {{ range .Message }}
+        <li> {{ . }} </li>
+        {{else}}
+        <li>No versions found.</li>
+        {{ end }}
+    </ul>
     <script src="/static/js/script.js"></script>
 </body>
 </html>
