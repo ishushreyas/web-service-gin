@@ -13,14 +13,14 @@ type version struct {
 	Version float64 `json:"Version"`
 }
 
-var versions = []album{
+var versions = []version{
 	{ID: "1", Url: "Blue Train", Contributor: "John Coltrane", Version: 1.0},
 	{ID: "2", Url: "Jeru", Contributor: "Gerry Mulligan", Version: 1.001},
 	{ID: "3", Url: "Sarah Vaughan and Clifford Brown", Contributor: "Sarah Vaughan", Version: 1.002},
 }
 
 func getVersions(c *gin.Context) {
-	c.IndentedJSON(http.StatusOK, version)
+	c.IndentedJSON(http.StatusOK, versions)
 }
 
 func postVersions(c *gin.Context) {
@@ -48,7 +48,7 @@ func getVersionByID(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
-	router.GET("/versions", getVersionss)
+	router.GET("/versions", getVersions)
 	router.GET("/version/:id", getVersionByID)
 	router.POST("/versions", postVersions)
 
