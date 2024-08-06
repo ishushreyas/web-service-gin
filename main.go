@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -48,6 +47,15 @@ func getVersionByID(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
+	r.LoadHTMLGlob("templates/*")
+	r.Static("/static", "./static")
+
+	r.GET("/", func(c *gin.Context) {
+            c.HTML(http.StatusOK, "index.html", gin.H{
+                "Title":   "Gin Template Example",
+                "Message": "Hello, World!",
+            })
+        })
 	router.GET("/versions", getVersions)
 	router.GET("/version/:id", getVersionByID)
 	router.POST("/versions", postVersions)
