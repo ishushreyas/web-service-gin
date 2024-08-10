@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,7 +24,7 @@ func getVersions(c *gin.Context) {
 }
 
 func postVersions(c *gin.Context) {
-	var newVersion version 
+	var newVersion version
 
 	if err := c.BindJSON(&newVersion); err != nil {
 		return
@@ -47,6 +48,13 @@ func getVersionByID(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
+	config := cors.DefaultConfig()
+    config.AllowAllOrigins = true // Allows all origins
+    config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
+    config.AllowHeaders = []string{"Origin", "Content-Type", "Accept"}
+
+    // Use CORS middleware
+    router.Use(cors.New(config))
 	router.LoadHTMLGlob("templates/*")
 	router.Static("/static", "./static")
 
