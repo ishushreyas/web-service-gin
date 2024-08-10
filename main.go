@@ -23,6 +23,10 @@ func getVersions(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, versions)
 }
 
+func getLatestVersion(c *gin.Context) {
+	c.IndentedJSON(http.StatusOK, versions[len(versions)-1])
+}
+
 func postVersions(c *gin.Context) {
 	var newVersion version
 
@@ -65,6 +69,7 @@ func main() {
             })
         })
 	router.GET("/versions", getVersions)
+	router.GET("/latest", getLatestVersion)
 	router.GET("/version/:id", getVersionByID)
 	router.POST("/versions", postVersions)
 
