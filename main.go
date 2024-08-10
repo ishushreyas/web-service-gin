@@ -8,15 +8,15 @@ import (
 
 type version struct {
 	ID string `json:"id"`
-	Url string `json:"Url"`
+	Url string `json:"download_url"`
 	Contributor string `json:"contributor"`
-	Version float64 `json:"Version"`
+	Version int16 `json:"version"`
 }
 
 var versions = []version{
-	{ID: "1", Url: "Blue Train", Contributor: "John Coltrane", Version: 1.0},
-	{ID: "2", Url: "Jeru", Contributor: "Gerry Mulligan", Version: 1.001},
-	{ID: "3", Url: "Sarah Vaughan and Clifford Brown", Contributor: "Sarah Vaughan", Version: 1.002},
+	{ID: "1", Url: "Blue Train", Contributor: "John Coltrane", Version: 1},
+	{ID: "2", Url: "Jeru", Contributor: "Gerry Mulligan", Version: 10},
+	{ID: "3", Url: "https://web-service-gin-0z21.onrender.com/static/assets/version_11.apk", Contributor: "Sarah Vaughan", Version: 11},
 }
 
 func getVersions(c *gin.Context) {
