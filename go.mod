@@ -1,6 +1,6 @@
 module web-service-gin
 
-go 1.22.5
+go 1.23
 
 require (
 	github.com/bytedance/sonic v1.12.0 // indirect
