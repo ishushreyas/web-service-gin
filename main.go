@@ -30,9 +30,10 @@ func getLatestVersion(c *gin.Context) {
 func postVersions(c *gin.Context) {
 	var newVersion version
 
-	if err := c.BindJSON(&newVersion); err != nil {
-		return
-	}
+	if err := c.ShouldBindJSON(&newVersion); err != nil {
+        c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+        return
+    }
 
 	versions = append(versions, newVersion)
 	c.IndentedJSON(http.StatusCreated, newVersion)
