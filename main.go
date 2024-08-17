@@ -14,9 +14,7 @@ type version struct {
 }
 
 var versions = []version{
-	{ID: "1", Url: "Blue Train", Contributor: "John Coltrane", Version: 1},
-	{ID: "2", Url: "Jeru", Contributor: "Gerry Mulligan", Version: 10},
-	{ID: "3", Url: "https://web-service-gin-0z21.onrender.com/static/assets/version_11.apk", Contributor: "Sarah Vaughan", Version: 11},
+	{ID: "1", Url: "https://web-service-gin-0z21.onrender.com/static/assets/version_11.apk", Contributor: "Sarah Vaughan", Version: 1},
 }
 
 func getVersions(c *gin.Context) {
