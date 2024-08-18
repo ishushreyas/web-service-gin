@@ -52,11 +52,10 @@ func getVersionByID(c *gin.Context) {
 func main() {
 	router := gin.Default()
 	config := cors.DefaultConfig()
-    config.AllowAllOrigins = true // Allows all origins
+    config.AllowAllOrigins = true
     config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"}
     config.AllowHeaders = []string{"Origin", "Content-Type", "Accept"}
 
-    // Use CORS middleware
     router.Use(cors.New(config))
 	router.LoadHTMLGlob("templates/*")
 	router.Static("/static", "./static")
@@ -72,5 +71,5 @@ func main() {
 	router.GET("/version/:id", getVersionByID)
 	router.POST("/versions", postVersions)
 
-	router.Run("0.0.0.0:8080")
+	router.Run()
 }
