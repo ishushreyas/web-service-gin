@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Submit New Version</h2>
-    <form action="/versions" method="POST">
+    <form id="versionForm">
         <label for="id">ID:</label><br>
         <input type="text" id="id" name="id" required><br><br>
 
@@ -22,5 +22,37 @@
 
         <input type="submit" value="Submit">
     </form>
+
+    <script>
+        document.getElementById('versionForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+
+            // Create a new version object from the form data
+            const versionData = {
+                id: document.getElementById('id').value,
+                download_url: document.getElementById('download_url').value,
+                contributor: document.getElementById('contributor').value,
+                version: parseInt(document.getElementById('version').value, 10)
+            };
+
+            // Send the data as JSON using fetch
+            fetch('/versions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(versionData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Version submitted successfully!');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the version.');
+            });
+        });
+    </script>
 </body>
 </html>
