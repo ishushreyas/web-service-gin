@@ -66,6 +66,11 @@ func main() {
                 "Message": versions,
             })
         })
+	router.GET("/new", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "new-version.html", gin.H{
+			"Version": versions,
+		})
+	})
 	router.GET("/versions", getVersions)
 	router.GET("/latest", getLatestVersion)
 	router.GET("/version/:id", getVersionByID)

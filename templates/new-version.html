@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post New Version</title>
+</head>
+<body>
+    <h2>Submit New Version</h2>
+    <form action="/path/to/postVersions" method="POST">
+        <label for="id">ID:</label><br>
+        <input type="text" id="id" name="id" required><br><br>
+
+        <label for="download_url">Download URL:</label><br>
+        <input type="url" id="download_url" name="download_url" required><br><br>
+
+        <label for="contributor">Contributor:</label><br>
+        <input type="text" id="contributor" name="contributor" required><br><br>
+
+        <label for="version">Version:</label><br>
+        <input type="number" id="version" name="version" min="0" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

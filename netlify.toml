@@ -1,6 +1,0 @@
-[build]
-  command = "go build -tags netgo -ldflags '-s -w' -o app"
-  publish = "."
-
-[context.production.environment]
-  GO_VERSION = "1.20"
